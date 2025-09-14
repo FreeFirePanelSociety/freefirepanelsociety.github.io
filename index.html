@@ -1,92 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Free Fire Panel Society</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body { margin: 0; font-family: Arial, sans-serif; background: #fafafc; }
-    .header {
-      overflow: hidden;
-      background-color: #20232a;
-      padding: 12px 18px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+    /* Reset & base */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
-    .header a {
-      float: left;
-      color: #fff;
-      text-align: center;
-      padding: 10px 16px;
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #141e30, #243b55);
+      color: #f0f0f0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    a {
+      color: #61dafb;
       text-decoration: none;
-      font-size: 18px;
+      transition: color 0.3s ease;
+    }
+    a:hover {
+      color: #21a1f1;
+    }
+
+    /* Header */
+    header {
+      background-color: #1b2838;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+      padding: 15px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #61dafb;
+      letter-spacing: 2px;
+      user-select: none;
+    }
+    nav {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    nav a {
+      font-weight: 600;
+      padding: 8px 12px;
       border-radius: 4px;
-      transition: background 0.2s;
+      background-color: transparent;
     }
-    .header a.logo {
-      font-size: 24px;
-      font-weight: bold;
-      color: #61dafb;
-    }
-    .header a:hover {
-      background-color: #333;
-      color: #61dafb;
-    }
-    .header a.active {
+    nav a.active,
+    nav a:hover {
       background-color: #61dafb;
-      color: #20232a;
+      color: #1b2838;
     }
-    .header-right {
-      float: right;
-    }
-    @media screen and (max-width: 600px) {
-      .header a, .header-right { float: none; display: block; text-align: left; }
-    }
-    footer {
-      background: #20232a;
-      color: #fff;
+
+    /* Main content */
+    main {
+      flex-grow: 1;
+      max-width: 900px;
+      margin: 60px auto 40px auto;
+      padding: 30px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
       text-align: center;
-      padding: 18px 10px 12px 10px;
-      font-size: 15px;
-      box-shadow: 0 -2px 4px rgba(0,0,0,0.04);
-      margin-top: 50px;
+    }
+    main h1 {
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+    }
+    main p {
+      font-size: 1.15rem;
+      line-height: 1.6;
+      margin-bottom: 30px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .btn-primary {
+      text-transform: uppercase;
+      font-weight: 700;
+      background: #21a1f1;
+      color: #fff;
+      padding: 14px 32px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 6px 12px rgba(33, 161, 241, 0.6);
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn-primary:hover {
+      background: #61dafb;
+      box-shadow: 0 8px 18px rgba(97, 218, 251, 0.8);
+    }
+
+    /* Footer */
+    footer {
+      background-color: #1b2838;
+      padding: 20px 30px;
+      color: #a9b1c1;
+      text-align: center;
+      font-size: 0.9rem;
+      user-select: none;
+      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.7);
     }
     footer a {
-      color: #61dafb;
-      text-decoration: none;
-      margin: 0 8px;
+      margin: 0 10px;
+      font-weight: 600;
     }
-    footer a:hover {
-      text-decoration: underline;
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      nav {
+        justify-content: center;
+      }
+      main {
+        margin: 40px 15px 30px;
+        padding: 20px;
+      }
+      main h1 {
+        font-size: 2rem;
+      }
+      .btn-primary {
+        width: 100%;
+        padding: 14px 0;
+      }
     }
-    .main {
-      max-width: 800px;
-      margin: 40px auto 0 auto;
-      padding: 20px;
-      background: #fff;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-      border-radius: 8px;
-    }
-    h1 { color: #20232a; }
   </style>
 </head>
 <body>
-  <div class="header">
-    <a href="#home" class="logo">Free Fire Panel Society</a>
-    <div class="header-right">
-      <a class="active" href="#home">Home</a>
+  <header>
+    <div class="logo">Free Fire Panel Society</div>
+    <nav>
+      <a href="#home" class="active">Home</a>
       <a href="#shop">Shop</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
       <a href="#join">Join Now</a>
-    </div>
-  </div>
-  <div class="main">
+    </nav>
+  </header>
+  <main>
     <h1>Welcome to Free Fire Panel Society</h1>
-    <p>Here you can manage panels, shop for game assets, and join the community. Expand your Free Fire experience with our resources!</p>
-    <p>Use the navigation above to explore the site.</p>
-  </div>
+    <p>Manage your Free Fire gaming panels, shop for exclusive in-game assets, and connect with a thriving community of enthusiasts. Enhance your gameplay experience with trusted resources and timely updates.</p>
+    <a href="#join" class="btn-primary">Join Now</a>
+  </main>
   <footer>
-    &copy; 2025 Free Fire Panel Society &mdash; Hosted on <a href="https://github.com/">GitHub Pages</a> |
+    &copy; 2025 Free Fire Panel Society |
     <a href="#privacy">Privacy Policy</a> |
     <a href="#terms">Terms of Service</a>
   </footer>
